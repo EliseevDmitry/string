@@ -174,3 +174,55 @@ import Foundation
 //}
 //
 //print(secondSymbolIndex(word: "okko", symbol: "q"))
+
+
+//"1 2 3 4 5" -> "5 1"
+//"1 9 3 4 -5" -> "9 -5"
+//
+//func highAndLow(string: String) -> String {
+//
+//
+//    return "\(String(describing: string.components(separatedBy: .whitespaces).compactMap{Int($0)}.max() ?? 0)) \(String(describing: string.components(separatedBy: .whitespaces).compactMap{Int($0)}.min() ?? 0))"
+//}
+//
+//print(highAndLow(string: "1 9 3 4 -5"))
+
+
+//11. Написать функцию которая удаляет фрагмент в url-строке, тоесть код после #
+//
+//"www.apple.com#about" --> "www.apple.com"
+//"www.apple.com?page=1" -->"www.apple.com?page=1"
+//
+//func removeUrlAnchor(url: String) -> String {
+//    guard let index = url.firstIndex(of: "#") else { return url}
+//    let distance = url.distance(from: url.startIndex, to: index)
+//    return String(url.prefix(distance))
+//}
+// print(removeUrlAnchor(url: "www.apple.com#about"))
+
+
+//12. Найти заглавные буквы в строке и вернуть как массив индексов
+//
+//"AppLE" -> [0,3,4]
+//
+//func findCapitals(_ string: String) -> [Int] {
+//    var resultArr: [Int] = []
+//    for (index, item) in string.enumerated() {
+//        if String(item) == item.uppercased() {
+//            resultArr.append(index)
+//        }
+//    }
+//    return resultArr
+//}
+//
+//print(findCapitals("AppLE"))
+
+//13. Реверснуть слова
+//"This is an example!" -> "sihT si na !elpmaxe"
+//"double  spaces"      -> "elbuod  secaps"
+
+//func reverseWords(string: String) -> String {
+//    String(Array(string.components(separatedBy: " ")).map{ $0.reversed()}.joined(separator: " "))
+//}
+//
+//print(reverseWords(string: "double  spaces"))
