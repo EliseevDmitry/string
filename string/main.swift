@@ -112,10 +112,65 @@ import Foundation
 //"454793" -> "4547-9-3"
 //
 //func insertDash(string: String) -> String {
-//    zip(Array(string), Array(string).dropFirst()).map{$0 }
-//    return ""
+//    let strArr = Array(string)
+//    var newStr  = String()
+//    for (index, item) in strArr.enumerated() {
+//        if (index + 1) <= strArr.count - 1 {
+//            if let valueOne = Int(String(item)),
+//               let valueTwo = Int(String(strArr[index + 1])),
+//               valueOne % 2 != 0 &&
+//               valueTwo % 2 != 0 {
+//                newStr.append("\(item)-")
+//                continue
+//            }
+//        }
+//        newStr.append(item)
+//    }
+//    return newStr
 //}
+//
+//print(insertDash(string: "454793"))
 
 
+//8. Найти первый индекс элемента в строке
+//
+//"Hello", "l" ->  2
+//"abcba", "a" -> 0
+//"okko", "q" -> -1
+//
+//func secondSymbolIndex(word: String, symbol: Character) -> Int {
+//    if let endID = word.firstIndex(of: symbol) {
+//        return word.distance(from: word.startIndex, to:  endID)
+//    }
+//    return -1
+//}
+//
+//print(secondSymbolIndex(word: "okko", symbol: "q"))
 
 
+//9. Найти второй индекс элемента в строке
+//
+//"Hello", "l" ->  3
+//"abcba", "a" -> 4
+//"okko", "q" -> -1
+
+//func secondSymbolIndex(word: String, symbol: Character) -> Int {
+//    var index = word.startIndex
+//    var cointer = Int()
+//    while index < word.index(before: word.endIndex) {
+//        if word[index] == symbol {
+//            cointer += 1
+//            if cointer == 2 {
+//                break
+//            }
+//        }
+//        index = word.index(after: index)
+//    }
+//    if cointer > 0 {
+//        return word.distance(from: word.startIndex, to:  index)
+//    } else {
+//        return -1
+//    }
+//}
+//
+//print(secondSymbolIndex(word: "okko", symbol: "q"))
