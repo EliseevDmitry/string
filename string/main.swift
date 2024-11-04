@@ -226,3 +226,207 @@ import Foundation
 //}
 //
 //print(reverseWords(string: "double  spaces"))
+
+
+
+//14. Проверить что подстрока находится в конце строке
+//
+//"abc", "bc" ->  true
+//"abc", "d" ->  false
+
+//func stringEnds(_ string: String, end: String) -> Bool {
+//    string.suffix(end.count).elementsEqual(end)
+//}
+//
+//print(stringEnds("abc", end: "d"))
+
+
+//15. Вытащить середину строки
+//
+//"test" -> "es"
+//"testing" -> "t"
+//"middle" -> "dd"
+//"A" -> "A"
+
+//func getMiddle(string: String) -> String {
+////    let res = String(Array(string)[(Array(string).count - 1)/2]) +  String(Array(string)[((Array(string).count - 1)/2) + 1])
+////    print(res)
+//    return string.count % 2 == 0 ? String(Array(string)[(Array(string).count - 1)/2]) +  String(Array(string)[((Array(string).count - 1)/2) + 1]) : String(Array(string)[Array(string).count/2])
+//}
+//
+//print(getMiddle(string: "middle"))
+
+
+//16. Сконвертировать массив строк в массив чисел
+//
+//["1", "2", "3"] -> [1, 2, 3]
+
+//func toNumberArray(array: [String]) -> [Int] {
+//    array.compactMap { Int($0) }
+//}
+//
+//print(toNumberArray(array: ["1", "2", "3"]))
+
+
+//17. Поменять a на b и b на a
+//
+//"acb" -> "bca"
+//"aabacbaa" -> "bbabcabb"
+
+
+//func switchAtoB(_ string: String) -> String {
+////    var newString = String()
+////    string.forEach { item in
+////        item != "a" ? newString.append("a") : newString.append("b")
+////    }
+////    return newString
+//    String(Array(string).map { $0 != "a" ? "a" : "b" })
+//}
+//
+//print(switchAtoB("aabacbaa"))
+
+
+//18. Удалить rotten из слова
+//
+//["apple","rottenBanana","apple"] -> ["apple","banana","apple"]
+
+//func removeRotten(array: [String]) -> [String] {
+//    array.map { $0.replacingOccurrences(of: "rotten", with: "")}.map{ $0.lowercased()}
+//}
+//
+//print(removeRotten(array: ["apple","rottenBanana","apple"]))
+////запомнить метод!!! replacingOccurrences
+
+
+//19. Отсортировать по последнему символу строки
+//
+//"man i need a taxi up to ubud" -> ["a", "need", "ubud", "i", "taxi", "man", "to", "up"]
+//"what time are we climbing up the volcano" -> ["time", "are", "we", "the", "climbing", "volcano", "up", "what"]
+
+
+//func sortByLastCharacter(string: String) -> [String] {
+//    string.components(separatedBy: " ").sorted { $0.last ?? Character("") < $1.last ?? Character("") }
+//}
+//
+//print(sortByLastCharacter(string: "man i need a taxi up to ubud"))
+
+
+//20. Повторить число столько раз сколько оно по значению
+//
+//"312" -> "333122"
+//"102269" -> "12222666666999999999"
+//
+//func digitsExplode(string: String) -> String {
+//    String(Array(string).compactMap{String(repeating: $0, count: Int(String($0))!)}.joined())
+//}
+//
+//print(digitsExplode(string: "102269"))
+
+//21. Собрать первые загланые буквы в строку
+//
+//"This Is A Test" -> "TIAT"
+
+//func makeStringofFirstCharacters(phrase: String) -> String {
+//    String(Array(phrase).filter {$0.isUppercase})
+//}
+//
+//print(makeStringofFirstCharacters(phrase: "This Is A Test"))
+
+
+//22. Вернуть самое длинное слово из строки
+//
+//"a b c d e fgh" -> "fgh"
+//"one two three" -> "three"
+//"red blue grey" -> "grey"
+
+//func logestWord(_ string: String) -> String {
+//    String((Array(string.components(separatedBy: .whitespaces)).sorted {$0.count > $1.count}).first ?? "")
+//}
+//
+//print(logestWord("one two three"))
+
+
+//23 На вход даются две строки и нужно соединить в одну по формуле:
+//
+//shorter+reverse(longer)+shorter.
+//
+//"first", "abcde" -> "abcdetsrifabcde"
+//"hello", "bau" -> "bauollehbau"
+//"abcde", "fghi" -> "fghiedcbafghi"
+
+//func concatenateByFormula(lhs: String, rhs: String) -> String {
+//    rhs + String(lhs.reversed()) + rhs
+//}
+//
+//print(concatenateByFormula(lhs: "first", rhs: "abcde"))
+
+
+//24 Каждое вхождение слова coverage поменять на covfefe и
+// добавить в конец каждой строки covfefe
+//
+//"coverage" -> "covfefe"
+//"coverage coverage" -> "covfefe covfefe"
+//"nothing" -> "nothing covfefe"
+//"double space " -> "double space  covfefe"
+//"covfefe" -> "covfefe covfefe");
+//"erag" -> "erag covfefe"
+
+//func refactCovfefe(_ string: String) -> String {
+//    var arrStr = Array(string.components(separatedBy: .whitespaces))
+//    if arrStr.last != "coverage" {
+//        arrStr.append("coverage")
+//    }
+//    return String(arrStr.map{$0.replacingOccurrences(of: "coverage", with: "covfefe") }.joined(separator: " "))
+//}
+//
+//print(refactCovfefe("double space "))
+////можно сделать одну длинную не читаемую строку - тернарным оператором - но блиннннн!!!!
+
+//25. Удалять повторяющиеся слова которые идут последовательно
+//-------------------------Подумать___________________________
+//
+//"alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
+//-> "alpha beta gamma delta alpha beta gamma delta"
+
+//func removDuplicates(string: String) -> String {
+//    Array(string.components(separatedBy: .whitespaces)).removeAll { item in
+//        <#code#>
+//    }
+//    return ""
+//}
+//
+//print(removDuplicates(string: "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
+
+
+//26. Перевенуть строку без использования -  reversed
+//
+//"abcdef" -> "fedcba"
+
+//func reverseString(_ string: String) -> String {
+//    var index = string.index(before: string.endIndex)
+//    var newString = String()
+//    while index >= string.startIndex {
+//        newString.append(string[index])
+//        if index != string.startIndex {
+//            index = string.index(before: index)
+//        } else {
+//            break
+//        }
+//    }
+//    return newString
+//}
+//
+//print(reverseString("abcdef"))
+
+
+//27. Сконвертировать имя в инициалы
+//
+//"John Doe" -> "J. D."
+//"Artur Lector" -> "A. L."
+
+//func makeInitials(_ name: String) -> String {
+//   String(Array(name.components(separatedBy: .whitespaces)).map {$0.prefix(1) + "."}.joined(separator: " "))
+//}
+//
+//print(makeInitials("John Doe"))
+
