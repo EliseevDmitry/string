@@ -430,3 +430,59 @@ import Foundation
 //
 //print(makeInitials("John Doe"))
 
+
+//28. Реверснуть слова без использования - reversed
+//"The greatest victory is that which requires no battle"
+//-> "battle no requires which that is victory greatest The"
+
+//func reverseWords(_ string: String) -> String {
+//    String(Array(string.components(separatedBy: .whitespaces)).sorted(by: {$0.startIndex < $1.endIndex} ).joined(separator: " "))
+//}
+//
+//print(reverseWords("The greatest victory is that which requires no battle"))
+
+
+//29. Написать функцию суммирования строк
+//
+//"13",  "37" --> "50"
+
+// - ВОЗМОЖНО - МОЖНО БЕЗ ОПЦИОНАЛА?
+//func sumElements(lhs: String, rhs: String) -> String {
+//    "\((Int(lhs) ?? 0) + (Int(rhs) ?? 0))"
+//}
+//
+//print(sumElements(lhs: "13", rhs: "37"))
+
+//30. Вытащить число из строки
+//
+//"123" -> 123
+//"a1b2c3" -> 123
+//"aa1bb2cc3dd" -> 123
+
+//func filter(string: String) -> Int {
+//    
+//    return Int(Array(string).compactMap { Int(String($0)) }.map { String($0) }.joined()) ?? 0
+//}
+//
+//print(filter(string: "123"))
+
+
+//31. Проверить что все символы уникальны
+//
+//"abcdef" -> true
+//"aba" -> false
+
+//func uniqChars(_ str: String) -> Bool {
+//    var charSet: Set<Character> = Set()
+//    for item in str {
+//        if charSet.contains(item) {
+//            return false
+//        }
+//        charSet.insert(item)
+//    }
+//    return true
+//}
+//
+//print(uniqChars("aba"))
+
+
