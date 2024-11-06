@@ -388,11 +388,9 @@ import Foundation
 //"alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
 //-> "alpha beta gamma delta alpha beta gamma delta"
 
+
 //func removDuplicates(string: String) -> String {
-//    Array(string.components(separatedBy: .whitespaces)).removeAll { item in
-//        <#code#>
-//    }
-//    return ""
+//    return (zip(Array(string.components(separatedBy: .whitespaces)), Array(string.components(separatedBy: .whitespaces)).dropFirst()).compactMap {$0 != $1 ? $0 : nil} + [Array(string.components(separatedBy: .whitespaces)).last!]).joined(separator: " ")
 //}
 //
 //print(removDuplicates(string: "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
