@@ -7,6 +7,8 @@
 
 import Foundation
 
+//------------------------------------------------------------1-----------------------------------------------------------------
+
 //1. Подсчитать количество гласных (a, e, i, o, u) в строке
 //
 //"abracadabra" -> 5
@@ -15,6 +17,7 @@ import Foundation
 //func countVowels(_ str: String) -> Int {
 //}
 
+//------------------------------------------------------------1-FOR-------------------------------------------------------------
 
 //func countVowels(_ str: String) -> Int {
 //    let arrayChar: Set = ["a", "e", "i", "o", "u"] //O1
@@ -29,6 +32,27 @@ import Foundation
 //
 //print(countVowels("abracadabra"))
 
+//------------------------------------------------------------1-WHILE-------------------------------------------------------------
+
+//func countVowels(_ str: String) -> Int {
+//    let arrayChar: Set<Character> = ["a", "e", "i", "o", "u"] //O1 - сложность
+//    var arrString: [Character] = Array(str)
+//    var index = Int()
+//    var counter = Int()
+//    while index <= arrString.count - 1 {
+//        if arrayChar.contains(arrString[index]) {
+//            counter += 1
+//        }
+//        index += 1
+//    }
+//    return counter
+//}
+//
+//print(countVowels("pear tree"))
+
+//------------------------------------------------------------1-HOF-------------------------------------------------------------
+
+//------------------------------------------------------------2-----------------------------------------------------------------
 
 //2. Функция принимает число и символ и возвращает строку
 //
@@ -38,12 +62,41 @@ import Foundation
 //func repeatChar(_ count: Int, word: String) -> String {
 //}
 
+//------------------------------------------------------------2-FOR-------------------------------------------------------------
+
+//func repeatChar(_ count: Int, word: String) -> String {
+//    var strResult = String()
+//    for _ in 1...count {
+//        strResult.append(word)
+//    }
+//    return strResult
+//}
+//
+//print(repeatChar(5, word: "Hello"))
+
+//------------------------------------------------------------2-WHILE-------------------------------------------------------------
+
+//func repeatChar(_ count: Int, word: String) -> String {
+//    var strResult = String()
+//    var index = Int()
+//    while index < count {
+//        strResult.append(word)
+//        index += 1
+//    }
+//    return strResult
+//}
+//
+//print(repeatChar(5, word: "Hello"))
+
+//------------------------------------------------------------2-HOF---------------------------------------------------------------
+
 //func repeatChar(_ count: Int, word: String) -> String {
 //    String.init(repeating: word, count: count)
 //}
 //
 //print(repeatChar(5, word: "Hello"))
 
+//------------------------------------------------------------3-----------------------------------------------------------------
 
 //3. Замена всех символов строки на символ (contamination)
 //
@@ -51,6 +104,20 @@ import Foundation
 //("","z") → ""
 //("_3ebzgh4","&") → "&&&&&&&&"
 //
+
+//------------------------------------------------------------3-FOR-------------------------------------------------------------
+
+//func contamination(string: String, char: String) -> String {
+//    var newString = String()
+//    for _ in 1...string.count {
+//        newString.append(char)
+//    }
+//    return newString
+//}
+//
+//print(contamination(string: "abc", char: "*"))
+
+//------------------------------------------------------------3-WHILE-------------------------------------------------------------
 
 //func contamination(string: String, char: String) -> String {
 //    var index = string.startIndex
@@ -64,11 +131,53 @@ import Foundation
 //
 //print(contamination(string: "abc", char: "*"))
 
+//------------------------------------------------------------3-HOF---------------------------------------------------------------
+
+//func contamination(string: String, char: String) -> String {
+//    return Array(string).compactMap {_ in char}.joined()
+//}
+//
+//print(contamination(string: "abc", char: "*"))
+
+//------------------------------------------------------------4-------------------------------------------------------------------
 
 //4. Удалить пустые символы из строкик
 
 //"8 j 8   mBliB8g  imjB8B8  jl  B" -> "8j8mBliB8gimjB8B8jlB"
 //"8aaaaa dddd r     " -> "8aaaaaddddr"
+
+//------------------------------------------------------------4-FOR---------------------------------------------------------------
+
+//func removeSpaces(string: String) -> String {
+//    var newString = String()
+//    for item in string {
+//        if item == " " {
+//            continue
+//        }
+//        newString.append(item)
+//    }
+//    return newString
+//}
+//
+//print(removeSpaces(string: "8 j 8   mBliB8g  imjB8B8  jl  B"))
+
+//------------------------------------------------------------4-WHILE-------------------------------------------------------------
+
+//func removeSpaces(string: String) -> String {
+//    var index = string.startIndex
+//    var newString = String()
+//    while index <= string.index(before: string.endIndex) {
+//        if string[index] != " " {
+//            newString.append(string[index])
+//        }
+//        index = string.index(after: index)
+//    }
+//    return newString
+//}
+//
+//print(removeSpaces(string: "8 j 8   mBliB8g  imjB8B8  jl  B"))
+
+//------------------------------------------------------------4-HOF---------------------------------------------------------------
 
 //func removeSpaces(string: String) -> String {
 //    string.components(separatedBy: .whitespaces).joined()
@@ -76,9 +185,45 @@ import Foundation
 //
 //print(removeSpaces(string: "8 j 8   mBliB8g  imjB8B8  jl  B"))
 
+//------------------------------------------------------------5-------------------------------------------------------------------
+
 //5. Вывести количество символов самого маленького слова в предложении
 //
 //"Let's travel abroad shall we" → 2
+
+//------------------------------------------------------------5-FOR---------------------------------------------------------------
+
+//func countMinWord(_ string: String) -> Int {
+//    var strArray = Array(string.components(separatedBy: .whitespaces))
+//    guard var counter = strArray.first?.count else { return 0 }
+//    for item in strArray {
+//        if counter > item.count {
+//            counter = item.count
+//        }
+//    }
+//    return counter
+//}
+//
+//print(countMinWord("Let's travel abroad shall we"))
+
+//------------------------------------------------------------5-WHILE-------------------------------------------------------------
+
+//func countMinWord(_ string: String) -> Int {
+//    var strArray = Array(string.components(separatedBy: .whitespaces))
+//    guard var counter = strArray.first?.count else { return 0 }
+//    var index = Int()
+//    while index < strArray.count {
+//        if counter > strArray[index].count {
+//            counter = strArray[index].count
+//        }
+//        index += 1
+//    }
+//    return counter
+//}
+//
+//print(countMinWord("Let's travel abroad shall we"))
+
+//------------------------------------------------------------5-HOF---------------------------------------------------------------
 
 //func countMinWord(_ string: String) -> Int {
 //    var arrString = Array(string.components(separatedBy: " "))
@@ -87,6 +232,7 @@ import Foundation
 //
 //print(countMinWord("Let's travel abroad shall we"))
 
+//------------------------------------------------------------6-------------------------------------------------------------------
 
 //6. Сделать маску для номера кредитной карты чтобы отображались только последние 4 цифры
 //"4556364607935616" -> "************5616"
@@ -112,21 +258,20 @@ import Foundation
 //"454793" -> "4547-9-3"
 //
 //func insertDash(string: String) -> String {
-//    let strArr = Array(string)
-//    var newStr  = String()
-//    for (index, item) in strArr.enumerated() {
-//        if (index + 1) <= strArr.count - 1 {
-//            if let valueOne = Int(String(item)),
-//               let valueTwo = Int(String(strArr[index + 1])),
-//               valueOne % 2 != 0 &&
-//               valueTwo % 2 != 0 {
-//                newStr.append("\(item)-")
-//                continue
-//            }
+//    var index = Int()
+//    var str = String()
+//    var arrStr: [Character] = Array(string)
+//    while index < arrStr.count - 1 {
+//        let curent = Int(String(arrStr[index])) ?? 0
+//        let next = Int(String(arrStr[index + 1])) ?? 0
+//        if curent % 2 != 0 && next % 2 != 0 {
+//            str.append("\(curent)-")
+//        } else {
+//            str.append("\(curent)")
 //        }
-//        newStr.append(item)
+//        index += 1
 //    }
-//    return newStr
+//    return (str + String(arrStr[arrStr.count-1]))
 //}
 //
 //print(insertDash(string: "454793"))
@@ -155,25 +300,23 @@ import Foundation
 //"okko", "q" -> -1
 
 //func secondSymbolIndex(word: String, symbol: Character) -> Int {
-//    var index = word.startIndex
-//    var cointer = Int()
-//    while index < word.index(before: word.endIndex) {
-//        if word[index] == symbol {
-//            cointer += 1
-//            if cointer == 2 {
-//                break
-//            }
+//    let arrSt = Array(word)
+//    var index = Int()
+//    var conter = Int()
+//    while index < arrSt.count - 1 {
+//        if conter == 1 && arrSt[index] == symbol {
+//            break
 //        }
-//        index = word.index(after: index)
+//        if arrSt[index] == symbol {
+//            conter += 1
+//        }
+//            index += 1
 //    }
-//    if cointer > 0 {
-//        return word.distance(from: word.startIndex, to:  index)
-//    } else {
-//        return -1
-//    }
+//    
+//    return conter == 0 ? -1 : index
 //}
 //
-//print(secondSymbolIndex(word: "okko", symbol: "q"))
+//print(secondSymbolIndex(word: "Hello", symbol: "l"))
 
 
 //"1 2 3 4 5" -> "5 1"
@@ -388,11 +531,9 @@ import Foundation
 //"alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"
 //-> "alpha beta gamma delta alpha beta gamma delta"
 
+
 //func removDuplicates(string: String) -> String {
-//    Array(string.components(separatedBy: .whitespaces)).removeAll { item in
-//        <#code#>
-//    }
-//    return ""
+//    return (zip(Array(string.components(separatedBy: .whitespaces)), Array(string.components(separatedBy: .whitespaces)).dropFirst()).compactMap {$0 != $1 ? $0 : nil} + [Array(string.components(separatedBy: .whitespaces)).last!]).joined(separator: " ")
 //}
 //
 //print(removDuplicates(string: "alpha beta beta gamma gamma gamma delta alpha beta beta gamma gamma gamma delta"))
