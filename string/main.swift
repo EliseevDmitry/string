@@ -486,3 +486,182 @@ import Foundation
 //print(uniqChars("aba"))
 
 
+//32. Разделить строку на N различных случаев одинаковой длины
+//
+//"Strengthened", 6 -> ["St", "re", "ng", "th", "en", "ed"]
+//"Unscrupulous", 2 -> ["Unscru", "pulous"]
+//"Flavorless", 1 -> ["Flavorless"]
+
+//func splitNCases(_ str: String, _ cases: Int) -> [String] {
+//    var newString = String()
+//    var strArr = Array(str)
+//    var counter = (strArr.count / cases)
+//    for (index, item) in strArr.enumerated() {
+//        if index == counter {
+//            newString.append(",")
+//            if counter <= counter + (strArr.count / cases) {
+//                counter += (strArr.count / cases)
+//            }
+//        }
+//        newString.append(item)
+//    }
+//    return newString.components(separatedBy: ",")
+//}
+//
+//print(splitNCases("Flavorless", 1))
+////не придумал как это сделать короче
+
+
+//33. Проверить что почтовый индекс является валидным
+//
+//Пачтовый индекс валидный:
+//- Если состоит только из цифр
+//- Цифр должно быть 6
+//- Не может начинаться с цифр 0, 5, 7, 8 и 9
+//
+//198328 -> true
+//310003 -> true
+//056879 -> false
+//12A483 -> false
+//1@63 -> false
+
+//func checkPostalCode(_ code: String) -> Bool {
+//    var numSet: Set<Character> = ["0", "5", "7", "8", "9"]
+//    guard let postCode = Int(code) else { return false}
+//    guard let firstElement = code.first else { return false }
+//    if numSet.contains(firstElement) || code.count != 6 {
+//        return false
+//    }
+//    return true
+//}
+//
+//print(checkPostalCode("1@63"))
+
+
+//34. Проверить что пароль является валидным
+//
+//Пароль валидный если
+//- минимум 8 символов но не больше 128
+//- Есть минимум один символ в верхнем регистре и нижнем регистре
+//- Есть как минимум один спец символ - ~ ! ? @ # $ % ^ & * _ - + ( ) [ ] { } > < / \ | " ' . , : ;
+//- Есть как минимум одна цифра 0-9
+//- Только латинские или кириллические символы
+//
+//Abracadabra1* -> true
+//Abracadabra1 -> false
+//1*AqBc -> false
+
+//func checkPassword(_ password: String) -> Bool {
+//    let symbolSet: Set<Character> = ["-", "~", "!", "?", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "(", ")", "[", "]", "{", "}", ">", "<", "/", "\\", "|", "\"", "'", ".", ",", ":", ";"] // - запомнить \\ и \"
+//    let numberSet: Set<Character> = Set((1...9).compactMap{Character("\($0)")})
+//    var newString = String()
+//    var newString2 = String()
+//    if password.count < 8 || password.count > 128 {
+//        return false
+//    }
+//    var counter = Int()
+//    
+//
+//    password.forEach { item in
+//        if item.isLowercase {
+//            counter += 1
+//        }
+//    }
+//    if counter <= 0 { return false }
+//    counter = 0
+//    
+//    password.forEach { item in
+//        if item.isUppercase {
+//            counter += 1
+//        }
+//    }
+//    if counter <= 0 { return false }
+//    counter = 0
+//
+//    password.forEach { item in
+//        if symbolSet.contains(item) {
+//            counter += 1
+//        } else {
+//            newString.append(item)
+//        }
+//    }
+//    if counter <= 0 { return false }
+//    counter = 0
+//    
+//    newString.forEach { item in
+//        if numberSet.contains(item) {
+//            counter += 1
+//        } else {
+//            newString2.append(item)
+//        }
+//    }
+//    if counter <= 0 { return false }
+//    counter = 0
+//    newString2.forEach { item in
+//        if item.isLetter {
+//            counter += 1
+//        }
+//    }
+//    if counter <= 0 { return false }
+//    return true
+//}
+//
+//print(checkPassword("Abracadabra1"))
+
+//34. Проверить что пароль является валидным
+//
+//Пароль валидный если
+//- минимум 8 символов но не больше 128
+//- Есть минимум один символ в верхнем регистре и нижнем регистре
+//- Есть как минимум один спец символ - ~ ! ? @ # $ % ^ & * _ - + ( ) [ ] { } > < / \ | " ' . , : ;
+//- Есть как минимум одна цифра 0-9
+//- Только латинские или кириллические символы
+//
+//Abracadabra1* -> true
+//Abracadabra1 -> false
+//1*AqBc -> false
+
+//func checkPassword(_ password: String) -> Bool {
+//    let symbolSet: Set<Character> = ["-", "~", "!", "?", "@", "#", "$", "%", "^", "&", "*", "_", "-", "+", "(", ")", "[", "]", "{", "}", ">", "<", "/", "\\", "|", "\"", "'", ".", ",", ":", ";"] // - запомнить \\ и \"
+//    var conditions = (false, false, false, false, false)
+//    var newString = String()
+//    if password.count < 8 || password.count > 128 {
+//        return false
+//    }
+//    password.forEach { item in
+//        if item.isLowercase {
+//            conditions.0 = true
+//        }
+//        if item.isUppercase {
+//            conditions.1 = true
+//        }
+//        if symbolSet.contains(item) {
+//            conditions.2 = true
+//        } else {
+//            newString.append(item)
+//        }
+//    }
+//    if !Array(newString).elementsEqual(Array(newString).compactMap{($0).isNumber ? nil : $0 }) {
+//        conditions.3 = true
+//    }
+//    if Array(newString).compactMap({($0).isNumber ? nil : $0 }).elementsEqual(Array(newString).compactMap{($0).isNumber ? nil : $0 }.compactMap{($0).isLetter ? $0 : nil }) {
+//        conditions.4 = true
+//    }
+//    return conditions.0 && conditions.1 && conditions.2 && conditions.3 && conditions.4
+//}
+//
+//print(checkPassword("1*AqBc"))
+
+
+//35. На входе строка на выходе массив строк с капитализацей четных и нечетных символов
+//
+//"abcdef" -> ["AbCdEf", "aBcDeF"]
+//
+//func capitalize(_ string: String) -> [String] {
+//
+//   // print(Array(string).enumerated().map{ $0.offset % 2 != 0 ? String($0.element.uppercased()) : String($0.element) }.joined() )
+// return [Array(string).enumerated().map{ $0.offset % 2 == 0 ? String($0.element.uppercased()) : String($0.element) }.joined()] + [Array(string).enumerated().map{ $0.offset % 2 != 0 ? String($0.element.uppercased()) : String($0.element) }.joined()]
+//
+//}
+//
+//print(capitalize("abcdef"))
